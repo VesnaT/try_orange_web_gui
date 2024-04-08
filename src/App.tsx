@@ -27,7 +27,11 @@ function App() {
         tooltip="Button tooltip"
       ></Button>
       <Button text="Click me 2" disabled={true}></Button>
-      <Checkbox text="Check me" callback={onCheckChanged}></Checkbox>
+      <Checkbox
+        text="Check me"
+        callback={onCheckChanged}
+        tooltip="Checkbox tooltip"
+      ></Checkbox>
       <Checkbox text="Check me 2" disabled={true}></Checkbox>
       {/*<Dropdown></Dropdown>*/}
       {/*<RadioButton></RadioButton>*/}
