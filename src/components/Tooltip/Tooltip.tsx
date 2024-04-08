@@ -1,7 +1,7 @@
 import React from "react";
 import { OverlayTrigger, Tooltip as BSTooltip } from "react-bootstrap";
 
-const Tooltip = ({ children, tooltip }: any) => {
+const Tooltip = ({ children, tooltip }: { children: any; tooltip: string }) => {
   if (!tooltip) {
     return children;
   }
