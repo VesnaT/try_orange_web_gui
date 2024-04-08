@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Button from "./components/Button/Button";
-// import Dropdown from "./components/Dropdown/Dropdown";
+import Dropdown from "./components/Dropdown/Dropdown";
 import Checkbox from "./components/Checkbox/Checkbox";
 // import RadioButton from "./components/RadioButton/RadioButton";
 import Slider from "./components/Slider/Slider";
@@ -33,7 +33,11 @@ function App() {
         tooltip="Checkbox tooltip"
       ></Checkbox>
       <Checkbox text="Check me 2" disabled={true}></Checkbox>
-      {/*<Dropdown></Dropdown>*/}
+      <Dropdown
+        label={"Select"}
+        options={["one", "two", "three"]}
+        tooltip="Dropdown tooltip"
+      ></Dropdown>
       {/*<RadioButton></RadioButton>*/}
       <Slider
         text={"Range"}
