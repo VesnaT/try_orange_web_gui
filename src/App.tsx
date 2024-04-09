@@ -38,10 +38,7 @@ function App() {
         options={["one", "two", "three"]}
         tooltip="Dropdown tooltip"
       ></Dropdown>
-      <RadioButtons
-        options={["one", "two", "three"]}
-        label="Radio buttons"
-      ></RadioButtons>
+      <RadioButtons values={["one", "two", "three"]}></RadioButtons>
       <Slider
         text={"Range"}
         tooltip={"Range tooltip"}

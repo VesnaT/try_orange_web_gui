@@ -1,34 +1,36 @@
-import React from "react";
+import React, { useId } from "react";
 import Form from "react-bootstrap/Form";
 
 const RadioButtons = ({
-  options,
-  label = "",
-  disabled = false,
+  values,
+  selectedOption,
   callback = () => {},
 }: {
-  options: string[];
-  label?: string;
-  disabled?: boolean;
-  callback?: () => void;
+  values: string[];
+  selectedOption?: string;
+  callback?: (value: string) => void;
 }) => {
+  const id = useId();
+
+  const onSelectedChange = (e: any) => {
+    callback(e.target.value);
+  };
+
   return (
-    <Form>
-      <Form.Group className="mb-3" controlId="RadioButtons">
-        <Form.Label>{label}</Form.Label>
-        {options.map((option) => (
-          <Form.Check
-            id={option}
-            key={option}
-            type="radio"
-            label={option}
-            name="group"
-            disabled={disabled}
-            onChange={callback}
-          ></Form.Check>
-        ))}
-      </Form.Group>
-    </Form>
+    <Form.Group className="mb-3" controlId={id + "RadioButtons"}>
+      {values.map((value) => (
+        <Form.Check
+          type="radio"
+          name={id}
+          key={id + value}
+          id={id + value}
+          value={value}
+          label={value}
+          checked={selectedOption === value}
+          onChange={onSelectedChange}
+        ></Form.Check>
+      ))}
+    </Form.Group>
   );
 };
 
