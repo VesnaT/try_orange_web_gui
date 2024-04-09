@@ -3,7 +3,7 @@ import "./App.css";
 import Button from "./components/Button/Button";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Checkbox from "./components/Checkbox/Checkbox";
-// import RadioButton from "./components/RadioButton/RadioButton";
+import RadioButtons from "./components/RadioButtons/RadioButtons";
 import Slider from "./components/Slider/Slider";
 
 function App() {
@@ -38,7 +38,10 @@ function App() {
         options={["one", "two", "three"]}
         tooltip="Dropdown tooltip"
       ></Dropdown>
-      {/*<RadioButton></RadioButton>*/}
+      <RadioButtons
+        options={["one", "two", "three"]}
+        label="Radio buttons"
+      ></RadioButtons>
       <Slider
         text={"Range"}
         tooltip={"Range tooltip"}
