@@ -1,39 +1,41 @@
-import React from "react";
+import React, { useId } from "react";
+import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Tooltip from "../Tooltip/Tooltip";
+import Row from "react-bootstrap/Row";
 
 const Dropdown = ({
-  options,
+  values,
   label = "",
-  disabled = false,
   callback = () => {},
-  tooltip = "",
 }: {
-  options: string[];
+  values: string[];
   label?: string;
-  disabled?: boolean;
-  callback?: () => void;
-  tooltip?: string;
+  callback?: (value: any) => void;
 }) => {
+  const id = useId();
   return (
-    <Tooltip tooltip={tooltip}>
-      <Form>
-        <Form.Group className="mb-3" controlId="Dropdown">
-          <Form.Label>{label}</Form.Label>
+    <Form.Group className="mb-3">
+      <Row>
+        {label.length > 0 && (
+          <Col sm={2}>
+            <Form.Label htmlFor={id + label}>{label}</Form.Label>
+          </Col>
+        )}
+        <Col>
           <Form.Select
+            id={id + label}
             aria-label="Default select example"
-            disabled={disabled}
             onChange={callback}
           >
-            {options.map((option: string) => (
-              <option key={option} value={option}>
-                {option}
+            {values.map((value: string) => (
+              <option key={value} id={value} value={value} label={value}>
+                {value}
               </option>
             ))}
           </Form.Select>
-        </Form.Group>
-      </Form>
-    </Tooltip>
+        </Col>
+      </Row>
+    </Form.Group>
   );
 };
 
