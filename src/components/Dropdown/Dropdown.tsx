@@ -5,14 +5,21 @@ import Row from "react-bootstrap/Row";
 
 const Dropdown = ({
   values,
+  selectedValue,
   label = "",
   callback = () => {},
 }: {
   values: string[];
+  selectedValue?: string;
   label?: string;
   callback?: (value: any) => void;
 }) => {
   const id = useId();
+
+  const onSelectedChange = (e: any) => {
+    callback(e.target.value);
+  };
+
   return (
     <Form.Group className="mb-3">
       <Row>
@@ -25,7 +32,8 @@ const Dropdown = ({
           <Form.Select
             id={id + label}
             aria-label="Default select example"
-            onChange={callback}
+            defaultValue={selectedValue}
+            onChange={onSelectedChange}
           >
             {values.map((value: string) => (
               <option key={value} id={value} value={value} label={value}>

@@ -3,11 +3,11 @@ import Form from "react-bootstrap/Form";
 
 const RadioButtons = ({
   values,
-  selectedOption,
+  selectedValue,
   callback = () => {},
 }: {
   values: string[];
-  selectedOption?: string;
+  selectedValue?: string;
   callback?: (value: string) => void;
 }) => {
   const id = useId();
@@ -26,7 +26,7 @@ const RadioButtons = ({
           id={id + value}
           value={value}
           label={value}
-          checked={selectedOption === value}
+          checked={selectedValue === value}
           onChange={onSelectedChange}
         ></Form.Check>
       ))}
