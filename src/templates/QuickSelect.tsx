@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Dropdown from "../components/Dropdown/Dropdown";
-import Widget from "../components/Widget/Widget";
+import Dropdown from "../components/controls/Dropdown/Dropdown";
+import Widget from "../components/widget/Widget";
 
 const QuickSelect = () => {
   const [variableIndex, setVariableIndex] = useState(1);

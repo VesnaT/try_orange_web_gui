@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Box from "../components/Boxes/Box";
-import RadioButtons from "../components/RadioButtons/RadioButtons";
-import Widget from "../components/Widget/Widget";
+import Box from "../components/controls/Boxes/Box";
+import RadioButtons from "../components/controls/RadioButtons/RadioButtons";
+import Widget from "../components/widget/Widget";
 
 const Distances = () => {
   const [compareIndex, setCompareIndex] = useState(1);

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Dropdown from "../components/Dropdown/Dropdown";
-import Widget from "../components/Widget/Widget";
-import Box from "../components/Boxes/Box";
-import Slider from "../components/Slider/Slider";
-import Checkbox from "../components/Checkbox/Checkbox";
-import Indent from "../components/Boxes/Indent";
+import Dropdown from "../components/controls/Dropdown/Dropdown";
+import Widget from "../components/widget/Widget";
+import Box from "../components/controls/Boxes/Box";
+import Slider from "../components/controls/Slider/Slider";
+import Checkbox from "../components/controls/Checkbox/Checkbox";
+import Indent from "../components/controls/Boxes/Indent";
 
 const ScatterPlot = () => {
   const [xIndex, setXIndex] = useState(0);
