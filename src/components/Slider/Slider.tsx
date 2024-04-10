@@ -1,35 +1,31 @@
-import React, { useState } from "react";
+import React, { useId } from "react";
 import Form from "react-bootstrap/Form";
-import Tooltip from "../Tooltip/Tooltip";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const Slider = ({
-  text,
-  disabled = false,
+  value,
+  label = "",
   callback = () => console.log("Default onSlide"),
-  tooltip = "",
 }: {
-  text: string;
-  disabled?: boolean;
-  callback?: () => void;
-  tooltip?: string;
+  value: number;
+  label?: string;
+  callback?: (value: any) => void;
 }) => {
-  const [value, setValue] = useState(50);
-
-  const _onChange = (event: any) => {
-    setValue(event.target.value);
-    callback();
+  const id = useId();
+  const onValueChange = (e: any) => {
+    callback(e.target.value);
   };
 
   return (
-    <Tooltip tooltip={tooltip}>
-      <Form>
-        <Form.Group className="mb-3" controlId="Slider">
-          <Form.Label>{text}</Form.Label>
-          <Form.Range onChange={_onChange} disabled={disabled} />
-          <Form.Label>{value}</Form.Label>
-        </Form.Group>
-      </Form>
-    </Tooltip>
+    <Form.Group controlId={id + "Slider"} as={Row}>
+      <Col sm={3}>
+        <Form.Label>{label}</Form.Label>
+      </Col>
+      <Col>
+        <Form.Range value={value} onChange={onValueChange} />
+      </Col>
+    </Form.Group>
   );
 };
 

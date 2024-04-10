@@ -21,10 +21,10 @@ const Dropdown = ({
   };
 
   return (
-    <Form.Group className="mb-3">
+    <Form.Group className="mb-2">
       <Row>
         {label.length > 0 && (
-          <Col sm={2}>
+          <Col sm={3}>
             <Form.Label htmlFor={id + label}>{label}</Form.Label>
           </Col>
         )}

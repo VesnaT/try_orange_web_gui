@@ -17,7 +17,7 @@ const RadioButtons = ({
   };
 
   return (
-    <Form.Group className="mb-3" controlId={id + "RadioButtons"}>
+    <Form.Group controlId={id + "RadioButtons"}>
       {values.map((value) => (
         <Form.Check
           type="radio"
