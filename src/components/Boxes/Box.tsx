@@ -1,23 +1,32 @@
 import React from "react";
-import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
+import styled from "styled-components";
+
+const StDiv = styled.div`
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 8px;
+  border-color: rgba(0, 0, 0, 0.17);
+  min-width: 10rem;
+  width: 100%;
+  margin: 0 0 1rem 0;
+`;
+const StHeader = styled.h4`
+  border-bottom: 1px solid;
+  padding: 1rem;
+  border-color: rgba(0, 0, 0, 0.17);
+`;
+const StBody = styled.div`
+  padding: 1rem;
+`;
 
 const Box = ({ title = "", children }: { title?: string; children: any }) => {
   return (
     <Col>
-      <div
-        className="modal show"
-        style={{ display: "block", position: "initial" }}
-      >
-        <Modal.Dialog>
-          {title.length > 0 && (
-            <Modal.Header>
-              <Modal.Title>{title}</Modal.Title>
-            </Modal.Header>
-          )}
-          <Modal.Body>{children}</Modal.Body>
-        </Modal.Dialog>
-      </div>
+      <StDiv>
+        {title.length > 0 && <StHeader>{title}</StHeader>}
+        <StBody>{children}</StBody>
+      </StDiv>
     </Col>
   );
 };
