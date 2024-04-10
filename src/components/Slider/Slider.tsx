@@ -10,7 +10,7 @@ const Slider = ({
 }: {
   value: number;
   label?: string;
-  callback?: (value: any) => void;
+  callback?: (value: number) => void;
 }) => {
   const id = useId();
   const onValueChange = (e: any) => {

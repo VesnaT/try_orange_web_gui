@@ -1,39 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
-import Tooltip from "../Tooltip/Tooltip";
 
 const Checkbox = ({
-  text,
-  disabled = false,
+  checked,
+  label = "",
   callback = () => {},
-  tooltip = "",
 }: {
-  text: string;
-  disabled?: boolean;
-  callback?: () => void;
-  tooltip?: string;
+  checked: boolean;
+  label?: string;
+  callback?: (value: boolean) => void;
 }) => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const _onChange = () => {
-    setIsChecked(!isChecked);
-    callback();
+  const onCheckedChanged = (e: any) => {
+    callback(e.target.checked);
   };
 
   return (
-    <Tooltip tooltip={tooltip}>
-      <Form>
-        <Form.Check
-          inline
-          id={text}
-          type="checkbox"
-          label={text}
-          disabled={disabled}
-          checked={isChecked}
-          onChange={_onChange}
-        />
-      </Form>
-    </Tooltip>
+    <Form.Check
+      type="checkbox"
+      inline
+      id={label}
+      label={label}
+      checked={checked}
+      onChange={onCheckedChanged}
+    />
   );
 };
 
