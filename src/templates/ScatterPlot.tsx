@@ -7,45 +7,15 @@ import Checkbox from "../components/controls/Checkbox/Checkbox";
 import Indent from "../components/controls/Boxes/Indent";
 
 const ScatterPlot = () => {
-  const [xIndex, setXIndex] = useState(0);
-  const [yIndex, setYIndex] = useState(1);
-
   const values = ["Age", "Height", "Weight"];
 
+  const [xIndex, setXIndex] = useState(0);
+  const [yIndex, setYIndex] = useState(1);
   const [size, setSize] = useState(40);
   const [opacity, setOpacity] = useState(20);
   const [jittering, setJittering] = useState(60);
   const [jitterNumeric, setJitterNumeric] = useState(true);
-
-  const onXChanged = (value: string) => {
-    console.log("onXChanged", value);
-    setXIndex(values.indexOf(value));
-  };
-
-  const onYChanged = (value: string) => {
-    console.log("onYChanged", value);
-    setYIndex(values.indexOf(value));
-  };
-
-  const onSizeChanged = (value: number) => {
-    console.log("onSizeChanged", value);
-    setSize(value);
-  };
-
-  const onOpacityChanged = (value: number) => {
-    console.log("onOpacityChanged", value);
-    setOpacity(value);
-  };
-
-  const onJitteringChanged = (value: number) => {
-    console.log("onJitteringChanged", value);
-    setJittering(value);
-  };
-
-  const onJitterNumericChanged = (value: boolean) => {
-    console.log("onJitterNumericChanged", value);
-    setJitterNumeric(value);
-  };
+  const [showRegressionLine, setShowRegressionLine] = useState(true);
 
   return (
     <Widget title="Scatter Plot">
@@ -54,32 +24,32 @@ const ScatterPlot = () => {
           values={values}
           selectedValue={values[xIndex]}
           label="Axis x:"
-          callback={onXChanged}
+          callback={(value: string) => {
+            setXIndex(values.indexOf(value));
+          }}
         ></Dropdown>
         <Dropdown
           values={values}
           selectedValue={values[yIndex]}
           label="Axis y:"
-          callback={onYChanged}
+          callback={(value: string) => {
+            setYIndex(values.indexOf(value));
+          }}
         ></Dropdown>
       </Box>
       <Box title="Points">
-        <Slider value={size} label="Size:" callback={onSizeChanged}></Slider>
-        <Slider
-          value={opacity}
-          label="Opacity:"
-          callback={onOpacityChanged}
-        ></Slider>
+        <Slider value={size} label="Size:" callback={setSize}></Slider>
+        <Slider value={opacity} label="Opacity:" callback={setOpacity}></Slider>
         <Slider
           value={jittering}
           label="Jittering:"
-          callback={onJitteringChanged}
+          callback={setJittering}
         ></Slider>
         <Indent>
           <Checkbox
             checked={jitterNumeric}
             label="Jitter numeric values"
-            callback={onJitterNumericChanged}
+            callback={setJitterNumeric}
           ></Checkbox>
         </Indent>
       </Box>
@@ -89,7 +59,11 @@ const ScatterPlot = () => {
           label="Show color regions"
           disabled
         ></Checkbox>
-        <Checkbox checked={false} label="Show gridlines"></Checkbox>
+        <Checkbox
+          checked={showRegressionLine}
+          label="Show gridlines"
+          callback={setShowRegressionLine}
+        ></Checkbox>
         <Checkbox
           checked={false}
           label="Show regression line"

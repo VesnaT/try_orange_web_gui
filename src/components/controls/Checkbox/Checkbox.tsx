@@ -12,7 +12,7 @@ const Checkbox = ({
   disabled?: boolean;
   callback?: (value: boolean) => void;
 }) => {
-  const onCheckedChanged = (e: any) => {
+  const onCheckedChange = (e: any) => {
     callback(e.target.checked);
   };
 
@@ -23,7 +23,7 @@ const Checkbox = ({
       label={label}
       checked={checked}
       disabled={disabled}
-      onChange={onCheckedChanged}
+      onChange={onCheckedChange}
     />
   );
 };
