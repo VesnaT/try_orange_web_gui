@@ -12,8 +12,8 @@ interface ISpinSetting {
 }
 
 interface IOption {
-  value: string;
-  spinSetting: ISpinSetting | null;
+  label: string;
+  spinSetting?: ISpinSetting | null;
 }
 
 const RadioButtonsWithSpins = ({
@@ -34,26 +34,26 @@ const RadioButtonsWithSpins = ({
   return (
     <Form.Group>
       {options.map((option) => (
-        <Row className="mb-2" key={id + option.value}>
+        <Row className="mb-2" key={id + option.label}>
           <Col>
             <Form.Check
               type="radio"
               name={id}
-              key={id + option.value + "radio"}
-              id={id + option.value + "radio"}
-              value={option.value}
-              label={option.value}
-              checked={selectedValue === option.value}
+              key={id + option.label + "radio"}
+              id={id + option.label + "radio"}
+              value={option.label}
+              label={option.label}
+              checked={selectedValue === option.label}
               onChange={onSelectedChange}
             ></Form.Check>
           </Col>
           <Col>
-            {option.spinSetting !== null && (
+            {option.spinSetting && (
               <Form.Control
-                disabled={selectedValue !== option.value}
+                disabled={selectedValue !== option.label}
                 type="number"
-                key={id + option.value + "number"}
-                id={id + option.value + "number"}
+                key={id + option.label + "number"}
+                id={id + option.label + "number"}
                 value={option.spinSetting.defaultValue}
                 min={option.spinSetting.min}
                 max={option.spinSetting.max}
