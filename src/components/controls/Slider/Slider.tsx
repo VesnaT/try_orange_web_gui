@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 const Slider = ({
   value,
   label = "",
-  callback = () => console.log("Default onSlide"),
+  callback = () => {},
 }: {
   value: number;
   label?: string;
