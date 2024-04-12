@@ -32,7 +32,7 @@ const Dropdown = ({
           <Form.Select
             id={id + label}
             aria-label="Default select example"
-            defaultValue={selectedValue}
+            value={selectedValue}
             onChange={onSelectedChange}
           >
             {values.map((value: string) => (

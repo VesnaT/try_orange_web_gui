@@ -13,9 +13,9 @@ const HierarchicalClustering = () => {
   const pruningValues = ["None", "Max depth:"];
   const selectionValues = ["Manual", "Height ratio:", "Top N:"];
 
-  const [linkageIndex, setLinkageIndex] = useState(0);
-  const [annotationIndex, setAnnotationIndex] = useState(0);
-  const [colorIndex, setColorIndex] = useState(0);
+  const [linkageValue, setLinkageValue] = useState("Ward");
+  const [annotationValue, setAnnotationValue] = useState("One");
+  const [colorValue, setColorValue] = useState("Blue");
   const [pruningLabel, setPruningLabel] = useState(pruningValues[0]);
   const [selectionLabel, setSelectionLabel] = useState(selectionValues[0]);
   const [maxDepth, setMaxDepth] = useState(10);
@@ -63,13 +63,15 @@ const HierarchicalClustering = () => {
       <Box title="Linkage">
         <Dropdown
           values={linkageValues}
-          selectedValue={linkageValues[linkageIndex]}
+          selectedValue={linkageValue}
+          callback={setLinkageValue}
         ></Dropdown>
       </Box>
       <Box title="Annotations">
         <Dropdown
           values={annotationValues}
-          selectedValue={annotationValues[annotationIndex]}
+          selectedValue={annotationValue}
+          callback={setAnnotationValue}
         ></Dropdown>
         <Checkbox
           checked={false}
@@ -78,7 +80,8 @@ const HierarchicalClustering = () => {
         ></Checkbox>
         <Dropdown
           values={colorValues}
-          selectedValue={colorValues[colorIndex]}
+          selectedValue={colorValue}
+          callback={setColorValue}
           label="Color by:"
         ></Dropdown>
       </Box>
