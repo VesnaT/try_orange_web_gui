@@ -14,8 +14,8 @@ const Distances = () => {
     "Cosine",
   ];
 
-  const [compareIndex, setCompareIndex] = useState(1);
-  const [metricIndex, setMetricIndex] = useState(3);
+  const [compareValue, setCompareValue] = useState("Columns");
+  const [metricValue, setMetricValue] = useState("Manhattan");
 
   return (
     <Widget title="Distances">
@@ -23,19 +23,15 @@ const Distances = () => {
         <Box title="Compare">
           <RadioButtons
             values={compareValues}
-            selectedValue={compareValues[compareIndex]}
-            callback={(value: string) => {
-              setCompareIndex(compareValues.indexOf(value));
-            }}
+            selectedValue={compareValue}
+            callback={setCompareValue}
           ></RadioButtons>
         </Box>
         <Box title="Distance Metric">
           <RadioButtons
             values={metricValues}
-            selectedValue={metricValues[metricIndex]}
-            callback={(value: string) => {
-              setMetricIndex(metricValues.indexOf(value));
-            }}
+            selectedValue={metricValue}
+            callback={setMetricValue}
           ></RadioButtons>
         </Box>
       </HorizontalBox>

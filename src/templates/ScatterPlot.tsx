@@ -9,8 +9,8 @@ import Indent from "../components/controls/Boxes/Indent";
 const ScatterPlot = () => {
   const values = ["Age", "Height", "Weight"];
 
-  const [xIndex, setXIndex] = useState(0);
-  const [yIndex, setYIndex] = useState(1);
+  const [xVar, setXVar] = useState("Age");
+  const [yVar, setYVar] = useState("Height");
   const [size, setSize] = useState(40);
   const [opacity, setOpacity] = useState(20);
   const [jittering, setJittering] = useState(60);
@@ -22,19 +22,15 @@ const ScatterPlot = () => {
       <Box title="Axes">
         <Dropdown
           values={values}
-          selectedValue={values[xIndex]}
+          selectedValue={xVar}
           label="Axis x:"
-          callback={(value: string) => {
-            setXIndex(values.indexOf(value));
-          }}
+          callback={setXVar}
         ></Dropdown>
         <Dropdown
           values={values}
-          selectedValue={values[yIndex]}
+          selectedValue={yVar}
           label="Axis y:"
-          callback={(value: string) => {
-            setYIndex(values.indexOf(value));
-          }}
+          callback={setYVar}
         ></Dropdown>
       </Box>
       <Box title="Points">
