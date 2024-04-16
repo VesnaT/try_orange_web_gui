@@ -10,53 +10,49 @@ const HierarchicalClustering = () => {
   const linkageValues = ["Single", "Average", "Ward"];
   const annotationValues = ["One", "Two", "Three"];
   const colorValues = ["Red", "Blue", "Green"];
-  const pruningValues = ["None", "Max depth:"];
-  const selectionValues = ["Manual", "Height ratio:", "Top N:"];
-
-  const [linkageValue, setLinkageValue] = useState("Ward");
-  const [annotationValue, setAnnotationValue] = useState("One");
-  const [colorValue, setColorValue] = useState("Blue");
-  const [pruningLabel, setPruningLabel] = useState(pruningValues[0]);
-  const [selectionLabel, setSelectionLabel] = useState(selectionValues[0]);
-  const [maxDepth, setMaxDepth] = useState(10);
-  const [heightRatio, setHeightRatio] = useState(0.75);
-  const [topN, setTopN] = useState(3);
-  const [zoom, setZoom] = useState(0);
-
   const pruningOptions = [
-    { label: pruningValues[0] },
+    { label: "None" },
     {
-      label: pruningValues[1],
+      label: "Max depth:",
       spinSetting: {
-        defaultValue: maxDepth,
+        defaultValue: 10,
         min: 1,
         max: 100,
-        callback: setMaxDepth,
       },
     },
   ];
   const selectionOptions = [
-    { label: selectionValues[0] },
+    { label: "Manual" },
     {
-      label: selectionValues[1],
+      label: "Height ratio:",
       spinSetting: {
-        defaultValue: heightRatio,
+        defaultValue: 0.75,
         min: 0,
         max: 1,
         step: 0.001,
-        callback: setHeightRatio,
       },
     },
     {
-      label: selectionValues[2],
+      label: "Top N:",
       spinSetting: {
-        defaultValue: topN,
+        defaultValue: 3,
         min: 1,
         max: 20,
-        callback: setTopN,
       },
     },
   ];
+
+  const [linkageValue, setLinkageValue] = useState("Ward");
+  const [annotationValue, setAnnotationValue] = useState("One");
+  const [colorValue, setColorValue] = useState("Blue");
+  const [pruningValue, setPruningValue] = useState({
+    label: "None",
+  });
+  const [selectionValue, setSelectionValue] = useState({
+    label: "Height ratio:",
+    spinValue: 0.45,
+  });
+  const [zoom, setZoom] = useState(0);
 
   return (
     <Widget title="Hierarhical Clustering">
@@ -88,15 +84,15 @@ const HierarchicalClustering = () => {
       <Box title="Pruning">
         <RadioButtonsWithSpins
           options={pruningOptions}
-          selectedValue={pruningLabel}
-          callback={setPruningLabel}
+          selectedValue={pruningValue}
+          callback={setPruningValue}
         ></RadioButtonsWithSpins>
       </Box>
       <Box title="Selection">
         <RadioButtonsWithSpins
           options={selectionOptions}
-          selectedValue={selectionLabel}
-          callback={setSelectionLabel}
+          selectedValue={selectionValue}
+          callback={setSelectionValue}
         ></RadioButtonsWithSpins>
       </Box>
       <Slider value={zoom} label="Zoom:" callback={setZoom}></Slider>
