@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import Form from "react-bootstrap/Form";
 
 const Checkbox = ({
@@ -12,6 +12,7 @@ const Checkbox = ({
   disabled?: boolean;
   callback?: (value: boolean) => void;
 }) => {
+  const id = useId();
   const onCheckedChange = (e: any) => {
     callback(e.target.checked);
   };
@@ -19,7 +20,7 @@ const Checkbox = ({
   return (
     <Form.Check
       type="checkbox"
-      id={label}
+      id={id + label}
       label={label}
       checked={checked}
       disabled={disabled}
