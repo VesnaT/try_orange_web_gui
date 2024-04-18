@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "../components/controls/Boxes/Box";
 import HorizontalBox from "../components/controls/Boxes/HorizontalBox";
 import RadioButtons from "../components/controls/RadioButtons/RadioButtons";
@@ -14,24 +14,19 @@ const Distances = () => {
     "Cosine",
   ];
 
-  const [compareValue, setCompareValue] = useState("Columns");
-  const [metricValue, setMetricValue] = useState("Manhattan");
-
   return (
     <Widget title="Distances">
       <HorizontalBox>
         <Box title="Compare">
           <RadioButtons
             values={compareValues}
-            selectedValue={compareValue}
-            callback={setCompareValue}
+            selectedValue={"Columns"}
           ></RadioButtons>
         </Box>
         <Box title="Distance Metric">
           <RadioButtons
             values={metricValues}
-            selectedValue={metricValue}
-            callback={setMetricValue}
+            selectedValue={"Manhattan"}
           ></RadioButtons>
         </Box>
       </HorizontalBox>

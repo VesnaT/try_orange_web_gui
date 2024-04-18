@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useId, useState } from "react";
 import Form from "react-bootstrap/Form";
 
 const RadioButtons = ({
@@ -11,9 +11,11 @@ const RadioButtons = ({
   callback?: (value: string) => void;
 }) => {
   const id = useId();
+  const [selected, setSelected] = useState(selectedValue);
 
   const onSelectedChange = (e: any) => {
     callback(e.target.value);
+    setSelected(e.target.value);
   };
 
   return (
@@ -26,7 +28,7 @@ const RadioButtons = ({
           id={id + value}
           value={value}
           label={value}
-          checked={selectedValue === value}
+          checked={selected === value}
           onChange={onSelectedChange}
         ></Form.Check>
       ))}
