@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, {useId, useState} from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -15,9 +15,11 @@ const Dropdown = ({
   callback?: (value: any) => void;
 }) => {
   const id = useId();
+  const [currentValue, setCurrentValue] = useState(selectedValue);
 
   const onSelectedChange = (e: any) => {
     callback(e.target.value);
+    setCurrentValue(e.target.value);
   };
 
   return (
@@ -32,7 +34,7 @@ const Dropdown = ({
           <Form.Select
             id={id + label}
             aria-label="Default select example"
-            value={selectedValue}
+            value={currentValue}
             onChange={onSelectedChange}
           >
             {values.map((value: string) => (
