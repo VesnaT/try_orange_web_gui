@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Dropdown from "../components/controls/Dropdown/Dropdown";
 import Widget from "../components/widget/Widget";
 import Box from "../components/controls/Boxes/Box";
@@ -9,44 +9,26 @@ import Indent from "../components/controls/Boxes/Indent";
 const ScatterPlot = () => {
   const values = ["Age", "Height", "Weight"];
 
-  const [xVar, setXVar] = useState("Age");
-  const [yVar, setYVar] = useState("Height");
-  const [size, setSize] = useState(40);
-  const [opacity, setOpacity] = useState(20);
-  const [jittering, setJittering] = useState(60);
-  const [jitterNumeric, setJitterNumeric] = useState(true);
-  const [showRegressionLine, setShowRegressionLine] = useState(true);
-
   return (
     <Widget title="Scatter Plot">
       <Box title="Axes">
         <Dropdown
           values={values}
-          selectedValue={xVar}
+          selectedValue={"Age"}
           label="Axis x:"
-          callback={setXVar}
         ></Dropdown>
         <Dropdown
           values={values}
-          selectedValue={yVar}
+          selectedValue={"Height"}
           label="Axis y:"
-          callback={setYVar}
         ></Dropdown>
       </Box>
       <Box title="Points">
-        <Slider value={size} label="Size:" callback={setSize}></Slider>
-        <Slider value={opacity} label="Opacity:" callback={setOpacity}></Slider>
-        <Slider
-          value={jittering}
-          label="Jittering:"
-          callback={setJittering}
-        ></Slider>
+        <Slider value={40} label="Size:"></Slider>
+        <Slider value={20} label="Opacity:"></Slider>
+        <Slider value={60} label="Jittering:"></Slider>
         <Indent>
-          <Checkbox
-            checked={jitterNumeric}
-            label="Jitter numeric values"
-            callback={setJitterNumeric}
-          ></Checkbox>
+          <Checkbox checked={true} label="Jitter numeric values"></Checkbox>
         </Indent>
       </Box>
       <Box title="Plot">
@@ -55,11 +37,7 @@ const ScatterPlot = () => {
           label="Show color regions"
           disabled
         ></Checkbox>
-        <Checkbox
-          checked={showRegressionLine}
-          label="Show gridlines"
-          callback={setShowRegressionLine}
-        ></Checkbox>
+        <Checkbox checked={true} label="Show gridlines"></Checkbox>
         <Checkbox
           checked={false}
           label="Show regression line"
