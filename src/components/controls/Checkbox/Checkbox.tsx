@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useId, useState } from "react";
 import Form from "react-bootstrap/Form";
 
 const Checkbox = ({
@@ -13,8 +13,10 @@ const Checkbox = ({
   callback?: (value: boolean) => void;
 }) => {
   const id = useId();
+  const [isChecked, setIsChecked] = useState(checked);
   const onCheckedChange = (e: any) => {
     callback(e.target.checked);
+    setIsChecked(e.target.checked);
   };
 
   return (
@@ -22,7 +24,7 @@ const Checkbox = ({
       type="checkbox"
       id={id + label}
       label={label}
-      checked={checked}
+      checked={isChecked}
       disabled={disabled}
       onChange={onCheckedChange}
     />
